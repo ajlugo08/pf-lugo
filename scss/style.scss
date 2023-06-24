@@ -1,427 +1,206 @@
+$font-family: 'Antonio', sans-serif;
+
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Antonio', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+}
+
+
+
+@use 'partials/header' as *;
+@use 'partials/banner' as *;
+@use 'partials/camisetas' as *;
+@use 'partials/argentina' as *;
+@use 'partials/footer' as *;
+@use 'partials/banner-espana' as *;
+@use 'partials/banner-inglaterra' as *;
+
+
+
+$primary-color: #4d4d5c;
+$secondary-color: #ffed00;
+
+
+
+@mixin button-style {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all 0.4s;
+}
+
+
+
+.error {
+  border: 1px solid red;
+  color: red;
+}
+
+/* Header */
+header {
+  height: 100px;
+  width: auto;
+  background-color: $primary-color;
+  padding: 0 50px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    text-transform: uppercase;
+    color: $secondary-color;
+    font-weight: 200;
   }
-  
-  /*Header*/
-  header {
-    height: 100px;
-    width: auto;
-    background-color: #4d4d5c;
-    padding: 0 50px;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  
-    .logo {
+
+  .menu {
+    a {
+      color: #fff;
       text-transform: uppercase;
-      color: #ffed00;
-      font-weight: 200;
-    }
-  
-    .menu {
-      a {
-        color: #fff;
-        text-transform: uppercase;
-        text-decoration: none;
-        padding: 0 10px;
-        transition: 0.4s;
-  
-        &:hover {
-          color: #ffed00;
-        }
-      }
-    }
-  
-    .mostrar-menu,
-    .esconder-menu {
-      font-size: 30px;
-      cursor: pointer;
-      display: none;
+      text-decoration: none;
+      padding: 0 10px;
       transition: 0.4s;
-    }
-  
-    .mostrar-menu {
-      order: 1;
-    }
-  
-    .menu a:hover,
-    .mostrar-menu:hover,
-    .esconder-menu:hover {
-      color: #ffed00;
-    }
-  
-    #check {
-      display: none;
-    }
-  }
-  
-  /*Banner*/
-  #banner {
-    padding: 0 50px;
-    background-image: url(../assets/images/city2223.webp);
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    width: auto;
-  
-    .contenido-banner {
-      h3 {
-        font-size: 30px;
-        font-weight: 400;
-        padding: 10px 0px;
-  
-        span {
-          font-weight: 600;
-        }
-      }
-  
-      position: relative;
-      color: #fff;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-  
-      .boton-premier {
-        text-decoration: none;
-        color: #fff;
-        border: 1px solid #ffed00;
-        padding: 20px 40px;
-        align-self: baseline;
-        transition: all 0.4s;
-  
-        &:hover {
-          background: #f1e10025;
-        }
-      }
-    }
-  }
-  
-  #kounde {
-    padding: 0 50px;
-    background-image: url(../assets/images/kounde.jpg);
-    background-size: cover;
-    background-position: center;
-    height: 50vh;
-    width: auto;
-  
-    .contenido-kounde {
-      font-size: 30px;
-      font-weight: 400;
-      padding: 10px 0px;
-  
-      position: relative;
-      color: #fff;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-  }
-  
-  /*Camisetas*/
-  #camisetas {
-    padding: 50px 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    img {
-      width: auto;
-    }
-  
-    div {
-      padding: 30px 30px;
-  
-      h4 {
-        color: #000000;
-        font-size: 20px;
-        margin: 15px 0px;
-      }
-  
-      p {
-        color: black;
-        font-size: 18px;
-      }
-    }
-  
-    .boton-españa {
-      display: inline-block;
-      text-decoration: none;
-      color: #000000;
-      padding: 10px 30px;
-      border: 3px solid #4d4d5c;
-      border-radius: 30px;
-      margin-top: 15px;
-      transition: all 0.4s;
-  
+
       &:hover {
-        background-color: #4d4d5c;
-        color: #fff;
+        color: $secondary-color;
       }
     }
-  
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-      padding: 30px;
-    }
   }
-  
-  /*Leo*/
-  #argentina {
-    padding: 0 50px;
-    background-image: url(../assets/images/Argentina-Adidas.webp);
-    background-size: cover;
-    background-position: center;
-    height: 50vh;
-    width: auto;
-  
-    .contenido-argentina {
+
+  .mostrar-menu,
+  .esconder-menu {
+    font-size: 30px;
+    cursor: pointer;
+    display: none;
+    transition: 0.4s;
+  }
+
+  .mostrar-menu {
+    order: 1;
+  }
+
+  .menu a:hover,
+  .mostrar-menu:hover,
+  .esconder-menu:hover {
+    color: $secondary-color;
+  }
+
+  #check {
+    display: none;
+  }
+}
+
+/* Banner */
+#banner {
+  padding: 0 50px;
+  background-image: url(../assets/images/city2223.webp);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: auto;
+
+  .contenido-banner {
+    h3 {
       font-size: 30px;
       font-weight: 400;
       padding: 10px 0px;
-  
-      position: relative;
-      color: #e5ff00;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+
+      span {
+        font-weight: 600;
+      }
     }
-  }
-  
-  /*footer*/
-  footer {
-    height: 100px;
-    width: auto;
-    background-color: #4d4d5c;
+
+    position: relative;
     color: #fff;
-    display: grid;
-    place-items: center;
-    padding: 2px;
-  
-    .boton-inicio {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #4caf50;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-  
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .boton-premier {
+      @include button-style;
+      color: #fff;
+      border: 1px solid $secondary-color;
+      padding: 20px 40px;
+      align-self: baseline;
+
       &:hover {
-        background-color: #45a049;
+        background: #f1e10025;
       }
     }
   }
-  
-  /*banner-españa*/
-  /*Banner*/
-  #banner-2 {
-    padding: 0 50px;
-    background-image: url(../assets/images/lewa.jpg);
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    width: auto;
-  
-    .contenido-banner-2 {
-      h3 {
-        font-size: 30px;
-        font-weight: 400;
-        padding: 10px 0px;
-  
-        span {
-          font-weight: 600;
-        }
-      }
-  
-      position: relative;
-      color: #fff;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+}
+
+/* Camisetas */
+.camisetas {
+  background-color: #fff;
+  padding: 50px;
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .camiseta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    img {
+      max-width: 200px;
+      margin-right: 20px;
+    }
+
+    .nombre {
+      font-weight: bold;
+    }
+
+    .precio {
+      color: $secondary-color;
+      margin-left: auto;
     }
   }
-  
-  /*banner-inglaterra*/
-  /*Banner*/
-  #banner-3 {
-    padding: 0 50px;
-    background-image: url(../assets/images/halland.webp);
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    width: auto;
-  
-    .contenido-banner-3 {
-      h3 {
-        font-size: 30px;
-        font-weight: 400;
-        padding: 10px 0px;
-  
-        span {
-          font-weight: 600;
-        }
-      }
-  
-      position: relative;
-      color: #fff;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+}
+
+/* Argentina */
+.argentina {
+  background-color: #f1f1f1;
+  padding: 50px;
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
   }
-  
-  /*banner-inglaterra*/
-  /*Banner*/
-  #banner-4 {
-    padding: 0 50px;
-    background-image: url(../assets/images/bayern-juego.jpg);
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    width: auto;
-  
-    .contenido-banner-4 {
-      h3 {
-        font-size: 30px;
-        font-weight: 400;
-        padding: 10px 0px;
-  
-        span {
-          font-weight: 600;
-        }
-      }
-  
-      position: relative;
-      color: #fff;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+
+  .bandera {
+    max-width: 200px;
+    margin-right: 20px;
   }
-  
-  /*banner-inglaterra*/
-  /*Banner*/
-  #banner-5 {
-    padding: 0 50px;
-    background-image: url(../assets/images/lionel-messi-psg-2023-1.jpg);
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    width: auto;
-  
-    .contenido-banner-5 {
-      h3 {
-        font-size: 30px;
-        font-weight: 400;
-        padding: 10px 0px;
-  
-        span {
-          font-weight: 600;
-        }
-      }
-  
-      position: relative;
-      color: #fff;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+
+  .descripcion {
+    margin-bottom: 20px;
   }
-  
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    /*Header*/
-    .mostrar-menu,
-    .esconder-menu {
-      display: block;
-    }
-  
-    header {
-      .mostrar-menu {
-        order: 1;
-      }
-  
-      .menu {
-        position: fixed;
-        width: 100%;
-        height: 100vh;
-        background: #4d4d5c;
-        right: -100%;
-        top: 0;
-        text-align: center;
-        padding: 100px 0px;
-        z-index: 100;
-        transition: 0.8s;
-  
-        a {
-          display: block;
-          padding: 20px;
-        }
-      }
-  
-      .esconder-menu {
-        position: absolute;
-        top: 40px;
-        right: 40px;
-      }
-  
-      #check:checked ~ .menu {
-        right: 0;
-      }
-    }
-  
-    /*camistetas*/
-    #camisetas {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-gap: 20px;
-      padding: 30px;
-      justify-items: center;
-      align-items: center;
-  
-      img {
-        width: auto;
-        max-width: 100%;
-      }
-  
-      div {
-        padding: 30px 30px;
-  
-        h4 {
-          color: #000000;
-          font-size: 20px;
-          margin: 15px 0px;
-        }
-  
-        p {
-          color: black;
-          font-size: 18px;
-        }
-      }
-  
-      .boton-españa {
-        display: inline-block;
-        text-decoration: none;
-        color: #000000;
-        padding: 10px 30px;
-        border: 3px solid #4d4d5c;
-        border-radius: 30px;
-        margin-top: 15px;
-        transition: all 0.4s;
-  
-        &:hover {
-          background-color: #4d4d5c;
-          color: #fff;
-        }
-      }
-    }
+}
+
+/* Footer */
+footer {
+  background-color: $primary-color;
+  color: #fff;
+  padding: 20px;
+
+  p {
+    text-align: center;
   }
+}
+
+/* Banner España */
+#banner-espana {
+  background-image: url(../assets/images/espana.webp);
+}
+
+/* Banner Inglaterra */
+#banner-inglaterra {
+  background-image: url(../assets/images/inglaterra.webp);
+}
